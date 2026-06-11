@@ -1,0 +1,17 @@
+node_modules
+
+dist/
+node_modules/
+.env
+
+dist/
+node_modules/
+.env
+
+public/*.webp
+dist/
+node_modules/
+
+public/*.webp
+dist/
+node_modules/
