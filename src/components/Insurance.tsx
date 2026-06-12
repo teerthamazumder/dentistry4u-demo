@@ -41,7 +41,7 @@ export default function Insurance() {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-sky-300/65 max-w-md mx-auto text-[15px]"
+            className="text-panel-muted max-w-md mx-auto text-[15px]"
           >
             We direct bill most major Canadian insurance providers. If you don't see yours listed, call us — we'll do our best to work with your plan.
           </motion.p>
@@ -55,14 +55,14 @@ export default function Insurance() {
               initial={{ opacity: 0, y: 28, scale: 0.96 }}
               animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ delay: 0.25 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
-              whileHover={{ y: -5, scale: 1.03 }}
-              className="glass-dark rounded-2xl p-5 text-center border border-white/10 hover:border-primary-500/35 transition-all duration-300 cursor-default"
+              whileHover={{ y: -5, scale: 1.03, boxShadow: '0 8px 28px rgba(214,134,49,0.12)' }}
+              className="glass-dark glass-card rounded-2xl p-5 text-center border border-white/10 hover:border-white/26 transition-all duration-300 cursor-default"
             >
               <div className={`w-12 h-12 rounded-2xl ${ins.iconBg} flex items-center justify-center mx-auto mb-3 font-extrabold text-sm ${ins.iconColor}`}>
                 {ins.abbr}
               </div>
               <div className="text-[12px] font-bold text-white leading-tight">{ins.name}</div>
-              <CheckCircle2 size={12} className="text-accent mx-auto mt-1.5 opacity-70" />
+              <CheckCircle2 size={12} className="text-[#D68631] mx-auto mt-1.5 opacity-80" />
             </motion.div>
           ))}
         </div>
@@ -72,11 +72,11 @@ export default function Insurance() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.7 }}
-          className="glass-dark rounded-2xl px-8 py-5 text-center border border-white/10"
+          className="glass-dark rounded-2xl px-8 py-5 text-center border border-[#D68631]/20"
         >
-          <p className="text-[13px] text-sky-300/65 leading-relaxed">
+          <p className="text-[13px] text-panel-muted leading-relaxed">
             Coverage depends on your plan. Our team can help verify your benefits before treatment.{' '}
-            <a href="tel:9024354848" className="text-accent font-bold hover:underline">
+            <a href="tel:9024354848" className="text-[#D68631] font-bold hover:underline">
               Call 902-435-4848
             </a>
           </p>

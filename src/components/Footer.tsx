@@ -31,7 +31,7 @@ export default function Footer({ onStaffLogin }: FooterProps) {
       <div className="absolute inset-0 dot-grid opacity-[0.04] pointer-events-none" />
 
       {/* Top border gradient */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/40 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D68631]/45 to-transparent" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 pb-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14">
@@ -49,7 +49,7 @@ export default function Footer({ onStaffLogin }: FooterProps) {
                 <div className="text-[11px] text-sky-400/70 font-medium">Dartmouth, Nova Scotia</div>
               </div>
             </div>
-            <p className="text-sky-300/60 text-[13px] leading-relaxed mb-6">
+            <p className="text-panel-muted text-[13px] leading-relaxed mb-6">
               Premium dental care for every smile in Dartmouth. Family-friendly, CDCP accepted, and always welcoming.
             </p>
             <GlowButton href="#booking" size="sm">
@@ -64,12 +64,12 @@ export default function Footer({ onStaffLogin }: FooterProps) {
             <ul className="space-y-4">
               <li>
                 <a href="tel:9024354848" className="flex items-start gap-3 group">
-                  <div className="w-7 h-7 rounded-lg bg-primary-800/60 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-primary-700/60 transition-colors">
-                    <Phone size={13} className="text-accent" />
+                  <div className="w-7 h-7 rounded-lg bg-[#D68631]/15 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#D68631]/28 transition-colors">
+                    <Phone size={13} className="text-[#D68631]" />
                   </div>
                   <div>
-                    <div className="text-[13px] font-semibold text-sky-200 group-hover:text-white transition-colors">902-435-4848</div>
-                    <div className="text-[11px] text-sky-400/50">Call or text</div>
+                    <div className="text-[13px] font-semibold text-panel-body group-hover:text-white transition-colors">902-435-4848</div>
+                    <div className="text-[11px] text-panel-muted">Call or text</div>
                   </div>
                 </a>
               </li>
@@ -79,8 +79,8 @@ export default function Footer({ onStaffLogin }: FooterProps) {
                     <Mail size={13} className="text-accent" />
                   </div>
                   <div>
-                    <div className="text-[13px] font-semibold text-sky-200 group-hover:text-white transition-colors">info@dentistry4u.ca</div>
-                    <div className="text-[11px] text-sky-400/50">General enquiries</div>
+                    <div className="text-[13px] font-semibold text-panel-body group-hover:text-white transition-colors">info@dentistry4u.ca</div>
+                    <div className="text-[11px] text-panel-muted">General enquiries</div>
                   </div>
                 </a>
               </li>
@@ -90,7 +90,7 @@ export default function Footer({ onStaffLogin }: FooterProps) {
                     <MapPin size={13} className="text-accent" />
                   </div>
                   <div>
-                    <div className="text-[13px] font-semibold text-sky-200">Dartmouth, Nova Scotia</div>
+                    <div className="text-[13px] font-semibold text-panel-body">Dartmouth, Nova Scotia</div>
                     <a
                       href="https://www.google.com/maps/search/Dentistry4U+Dartmouth+Nova+Scotia"
                       target="_blank"
@@ -113,14 +113,14 @@ export default function Footer({ onStaffLogin }: FooterProps) {
             <ul className="space-y-3">
               {hours.map(h => (
                 <li key={h.day} className="flex justify-between items-start gap-3">
-                  <span className="text-[12px] text-sky-300/55 leading-tight">{h.day}</span>
+                  <span className="text-[12px] text-panel-muted leading-tight">{h.day}</span>
                   <span className={`text-[12px] whitespace-nowrap font-semibold leading-tight ${h.time === 'Closed' ? 'text-white/25' : 'text-sky-100/80'}`}>{h.time}</span>
                 </li>
               ))}
             </ul>
-            <div className="mt-4 bg-primary-900/40 border border-primary-700/30 rounded-xl px-4 py-3">
-              <div className="text-[11px] text-sky-400/70 font-semibold">Emergency?</div>
-              <a href="tel:9024354848" className="text-white font-bold text-[15px] hover:text-accent transition-colors">902-435-4848</a>
+            <div className="mt-4 bg-[#D68631]/8 border border-[#D68631]/28 rounded-xl px-4 py-3">
+              <div className="text-[11px] text-[#D68631]/80 font-semibold">Emergency?</div>
+              <a href="tel:9024354848" className="text-white font-bold text-[15px] hover:text-[#D68631] transition-colors">902-435-4848</a>
             </div>
           </div>
 
@@ -130,7 +130,7 @@ export default function Footer({ onStaffLogin }: FooterProps) {
             <ul className="space-y-2.5">
               {quickLinks.map(l => (
                 <li key={l.href}>
-                  <a href={l.href} className="text-[13px] text-sky-300/60 hover:text-white transition-colors font-medium">
+                  <a href={l.href} className="text-[13px] text-panel-muted hover:text-white transition-colors font-medium">
                     {l.label}
                   </a>
                 </li>
@@ -140,7 +140,7 @@ export default function Footer({ onStaffLogin }: FooterProps) {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-6" />
+        <div className="h-px bg-gradient-to-r from-transparent via-[#D68631]/20 to-transparent mb-6" />
 
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3">

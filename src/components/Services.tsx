@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView, type PanInfo } from 'framer-motion'
 import {
   Search, Wrench, Sparkles, Moon, Stethoscope,
@@ -94,19 +94,21 @@ const services: Service[] = [
   },
 ]
 
-const CARD_GLASS = {
-  background: 'rgba(8, 47, 73, 0.42)',
-  backdropFilter: 'blur(16px)',
-  WebkitBackdropFilter: 'blur(16px)',
-  border: '1px solid rgba(56, 189, 248, 0.18)',
-} as const
+const CARD_GLASS: React.CSSProperties = {
+  background: 'linear-gradient(135deg, rgba(32, 72, 155, 0.68), rgba(8, 32, 74, 0.74))',
+  backdropFilter: 'blur(16px) saturate(140%)',
+  WebkitBackdropFilter: 'blur(16px) saturate(140%)',
+  border: '1px solid rgba(255, 255, 255, 0.13)',
+  boxShadow: '0 14px 40px rgba(0, 0, 0, 0.22)',
+}
 
-const CARD_GLASS_LIGHT = {
-  background: 'rgba(8, 47, 73, 0.36)',
-  backdropFilter: 'blur(14px)',
-  WebkitBackdropFilter: 'blur(14px)',
-  border: '1px solid rgba(56, 189, 248, 0.14)',
-} as const
+const CARD_GLASS_LIGHT: React.CSSProperties = {
+  background: 'linear-gradient(135deg, rgba(28, 62, 138, 0.58), rgba(8, 24, 60, 0.66))',
+  backdropFilter: 'blur(14px) saturate(130%)',
+  WebkitBackdropFilter: 'blur(14px) saturate(130%)',
+  border: '1px solid rgba(255, 255, 255, 0.10)',
+  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.18)',
+}
 
 function getStackStyles(pos: number) {
   return {
@@ -160,8 +162,8 @@ export default function Services() {
   return (
     <section id="services" className="relative py-28 px-6 overflow-hidden">
       {/* Ambient glow */}
-      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-primary-600/7 blur-[130px] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/4 w-[400px] h-[300px] rounded-full bg-cyan-500/6 blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/3 right-0 w-[500px] h-[500px] rounded-full bg-primary-600/4 blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/4 w-[400px] h-[300px] rounded-full bg-cyan-500/3 blur-[110px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
@@ -190,7 +192,7 @@ export default function Services() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
-              className="text-sky-300/65 text-[14px] leading-relaxed mb-8"
+              className="text-panel-muted text-[14px] leading-relaxed mb-8"
             >
               From your first checkup to complex smile transformations, our experienced team provides the full spectrum of dental care with a gentle touch.
             </motion.p>
@@ -225,8 +227,8 @@ export default function Services() {
                       onClick={() => setLayout(mode)}
                       className={`rounded-lg p-2 transition-all duration-200 ${
                         layout === mode
-                          ? 'bg-primary-600/65 text-white'
-                          : 'text-white/38 hover:text-white/65 hover:bg-white/8'
+                          ? 'bg-[#D68631]/70 text-white shadow-glow-gold-sm'
+                          : 'text-white/38 hover:text-[#D68631]/80 hover:bg-white/8'
                       }`}
                       aria-label={`Switch to ${mode} layout`}
                     >
@@ -283,7 +285,7 @@ export default function Services() {
                           </div>
                           <div className="flex-1 min-w-0">
                             <h3 className="text-[16px] font-bold text-white mb-2 leading-snug">{card.title}</h3>
-                            <p className="text-[13px] text-sky-300/68 leading-relaxed line-clamp-3 mb-3">{card.description}</p>
+                            <p className="text-[13px] text-panel-muted leading-relaxed line-clamp-3 mb-3">{card.description}</p>
                             <div className="flex flex-wrap gap-1.5">
                               {card.tags.map(tag => (
                                 <span
@@ -326,15 +328,15 @@ export default function Services() {
                         initial={{ opacity: 0, y: 18 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.04, duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                        whileHover={{ y: -3, boxShadow: '0 10px 36px rgba(6,182,212,0.13)' }}
+                        whileHover={{ y: -3, boxShadow: '0 22px 52px rgba(0,0,0,0.32)' }}
                         style={CARD_GLASS}
-                        className="rounded-2xl p-5 group cursor-default transition-colors duration-200 hover:border-cyan-400/30"
+                        className="rounded-2xl p-5 group cursor-default transition-colors duration-200 hover:border-white/28"
                       >
                         <div className={`w-10 h-10 rounded-xl ${card.iconBg} flex items-center justify-center mb-3.5 group-hover:scale-110 transition-transform duration-200`}>
                           <Icon size={18} className={card.iconColor} />
                         </div>
-                        <h3 className="text-[13px] font-bold text-white mb-1.5 leading-snug group-hover:text-accent transition-colors duration-200">{card.title}</h3>
-                        <p className="text-[12px] text-sky-300/58 leading-relaxed line-clamp-2">{card.description}</p>
+                        <h3 className="text-[13px] font-bold text-white mb-1.5 leading-snug group-hover:text-[#D68631] transition-colors duration-200">{card.title}</h3>
+                        <p className="text-[12px] text-panel-muted leading-relaxed line-clamp-2">{card.description}</p>
                       </motion.div>
                     )
                   })}
@@ -359,16 +361,16 @@ export default function Services() {
                         initial={{ opacity: 0, x: -14 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.04, duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-                        whileHover={{ x: 4 }}
+                        whileHover={{ x: 4, boxShadow: '0 14px 40px rgba(0,0,0,0.28)' }}
                         style={CARD_GLASS_LIGHT}
-                        className="rounded-2xl px-5 py-4 flex items-center gap-4 group cursor-default transition-colors duration-200 hover:border-cyan-400/28"
+                        className="rounded-2xl px-5 py-4 flex items-center gap-4 group cursor-default transition-colors duration-200 hover:border-white/24"
                       >
                         <div className={`w-10 h-10 rounded-xl ${card.iconBg} flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-200`}>
                           <Icon size={18} className={card.iconColor} />
                         </div>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2 flex-wrap mb-0.5">
-                            <h3 className="text-[13px] font-bold text-white leading-tight group-hover:text-accent transition-colors duration-200">{card.title}</h3>
+                            <h3 className="text-[13px] font-bold text-white leading-tight group-hover:text-[#D68631] transition-colors duration-200">{card.title}</h3>
                             <div className="flex gap-1 flex-wrap">
                               {card.tags.slice(0, 2).map(tag => (
                                 <span key={tag} className="text-[10px] font-semibold bg-white/6 text-sky-300/65 border border-white/8 px-2 py-0.5 rounded-full">
@@ -377,9 +379,9 @@ export default function Services() {
                               ))}
                             </div>
                           </div>
-                          <p className="text-[12px] text-sky-300/52 leading-snug line-clamp-1">{card.description}</p>
+                          <p className="text-[12px] text-panel-muted leading-snug line-clamp-1">{card.description}</p>
                         </div>
-                        <ChevronRight size={14} className="text-white/22 shrink-0 group-hover:text-cyan-400/45 transition-colors duration-200" />
+                        <ChevronRight size={14} className="text-white/22 shrink-0 group-hover:text-[#D68631]/55 transition-colors duration-200" />
                       </motion.div>
                     )
                   })}
@@ -411,8 +413,8 @@ export default function Services() {
                       onClick={() => setActiveIndex(index)}
                       className={`rounded-full transition-all duration-300 ${
                         index === activeIndex
-                          ? 'w-5 h-1.5 bg-accent'
-                          : 'w-1.5 h-1.5 bg-white/22 hover:bg-white/40'
+                          ? 'w-5 h-1.5 bg-[#D68631]'
+                          : 'w-1.5 h-1.5 bg-white/22 hover:bg-[#D68631]/50'
                       }`}
                       aria-label={`Go to service ${index + 1}`}
                     />

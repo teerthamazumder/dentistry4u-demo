@@ -28,7 +28,7 @@ export default function Testimonials() {
   return (
     <section className="relative py-28 px-6 overflow-hidden">
       {/* Glow accent — animated background shows through */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary-700/10 blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-primary-700/5 blur-[140px] pointer-events-none" />
       <div className="absolute inset-0 dot-grid opacity-[0.04] pointer-events-none" />
 
       <div ref={ref} className="max-w-7xl mx-auto relative z-10">
@@ -37,7 +37,7 @@ export default function Testimonials() {
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="inline-flex items-center gap-2.5 bg-white/8 border border-white/12 text-white/60 text-[11px] font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
+            className="inline-flex items-center gap-2.5 bg-[#D68631]/8 border border-[#D68631]/25 text-[#D68631]/85 text-[11px] font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6"
           >
             Patient Stories
           </motion.div>
@@ -56,7 +56,7 @@ export default function Testimonials() {
             className="flex items-center justify-center gap-2"
           >
             <Stars n={5} />
-            <span className="text-sky-300/80 text-[13px] font-semibold">5.0 · Google Reviews · Dartmouth, NS</span>
+            <span className="text-panel-body text-[13px] font-semibold">5.0 · Google Reviews · Dartmouth, NS</span>
           </motion.div>
         </div>
 
@@ -69,7 +69,7 @@ export default function Testimonials() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 + (i % 3) * 0.1, ease: [0.22, 1, 0.36, 1] }}
               whileHover={{ y: -5 }}
-              className="glass-dark rounded-3xl p-7 border border-white/10 hover:border-primary-500/30 transition-all duration-300 relative overflow-hidden group"
+              className="glass-dark glass-card rounded-3xl p-7 border border-white/10 hover:border-white/26 transition-all duration-300 relative overflow-hidden group"
             >
               {/* Decorative quote */}
               <Quote
@@ -80,20 +80,20 @@ export default function Testimonials() {
 
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary-600 to-accent flex items-center justify-center text-white font-extrabold text-sm mb-2">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#D68631] to-[#964405] flex items-center justify-center text-white font-extrabold text-sm mb-2">
                     {t.name[0]}
                   </div>
                   <div className="font-bold text-white text-[14px]">{t.name}</div>
-                  <div className="text-sky-300/60 text-[11px]">{t.location}</div>
+                  <div className="text-panel-muted text-[11px]">{t.location}</div>
                 </div>
-                <span className="text-[10px] font-bold bg-white/8 border border-white/12 text-sky-300 px-3 py-1.5 rounded-full shrink-0 ml-3">
+                <span className="text-[10px] font-bold bg-[#D68631]/10 border border-[#D68631]/25 text-[#D68631] px-3 py-1.5 rounded-full shrink-0 ml-3">
                   {t.service}
                 </span>
               </div>
 
               <Stars n={t.rating} />
 
-              <p className="text-sky-100/70 text-[13px] leading-relaxed mt-4">
+              <p className="text-panel-body text-[13px] leading-relaxed mt-4">
                 "{t.text}"
               </p>
             </motion.div>

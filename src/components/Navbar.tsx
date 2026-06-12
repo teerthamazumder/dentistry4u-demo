@@ -58,7 +58,7 @@ export default function Navbar({ onStaffLogin }: NavbarProps) {
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="text-[13px] font-semibold text-white/65 hover:text-accent transition-colors"
+                  className="text-[13px] font-semibold text-white/65 hover:text-[#D68631] transition-colors"
                 >
                   {l.label}
                 </a>
@@ -67,7 +67,7 @@ export default function Navbar({ onStaffLogin }: NavbarProps) {
             <li>
               <button
                 onClick={onStaffLogin}
-                className="text-[11px] font-semibold text-white/55 border border-white/15 px-4 py-2 rounded-full hover:border-accent hover:text-accent transition-all"
+                className="text-[11px] font-semibold text-white/55 border border-white/15 px-4 py-2 rounded-full hover:border-[#D68631]/70 hover:text-[#D68631] transition-all"
               >
                 Staff Login
               </button>
@@ -107,7 +107,7 @@ export default function Navbar({ onStaffLogin }: NavbarProps) {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="block px-6 py-3 text-[14px] font-semibold text-white/70 hover:bg-white/5 hover:text-accent transition-colors"
+                    className="block px-6 py-3 text-[14px] font-semibold text-white/70 hover:bg-white/5 hover:text-[#D68631] transition-colors"
                     onClick={() => setMenuOpen(false)}
                   >
                     {l.label}
@@ -123,7 +123,7 @@ export default function Navbar({ onStaffLogin }: NavbarProps) {
               <li className="px-6 pb-3">
                 <button
                   onClick={() => { setMenuOpen(false); onStaffLogin() }}
-                  className="w-full text-[12px] font-semibold text-white/50 border border-white/15 px-4 py-2 rounded-full mt-2 hover:border-accent hover:text-accent transition-all"
+                  className="w-full text-[12px] font-semibold text-white/50 border border-white/15 px-4 py-2 rounded-full mt-2 hover:border-[#D68631]/70 hover:text-[#D68631] transition-all"
                 >
                   Staff Login
                 </button>

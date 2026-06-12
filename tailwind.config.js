@@ -27,6 +27,10 @@ export default {
         accent: '#22D3EE',
         'brand-text': '#0F172A',
         muted: '#64748B',
+        // Warm gold palette
+        'warm-gold': '#D68631',
+        'deep-amber': '#964405',
+        'dark-brown': '#5A3211',
       },
       boxShadow: {
         'glow-sm': '0 0 20px rgba(8,145,178,0.15)',
@@ -37,6 +41,9 @@ export default {
         btn: '0 4px 20px rgba(8,145,178,0.40)',
         'btn-hover': '0 8px 30px rgba(8,145,178,0.50)',
         float: '0 8px 40px rgba(8,145,178,0.12)',
+        'glow-gold': '0 0 30px rgba(214,134,49,0.22), 0 0 60px rgba(214,134,49,0.08)',
+        'glow-gold-sm': '0 0 16px rgba(214,134,49,0.18)',
+        'btn-gold': '0 4px 20px rgba(214,134,49,0.35)',
       },
       keyframes: {
         float: {

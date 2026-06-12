@@ -25,14 +25,14 @@ const sizes: Record<Size, string> = {
 
 const variants: Record<Variant, { base: string; shadow: string; hoverShadow: string }> = {
   primary: {
-    base: 'bg-gradient-to-r from-[#0891B2] to-[#06B6D4] text-white border border-cyan-400/35',
-    shadow: '0 12px 32px rgba(6,182,212,0.28)',
-    hoverShadow: '0 16px 44px rgba(6,182,212,0.45)',
+    base: 'bg-gradient-to-r from-[#0096cc] to-[#0072b8] text-white border border-sky-400/30',
+    shadow: '0 8px 24px rgba(0, 0, 0, 0.30)',
+    hoverShadow: '0 12px 32px rgba(0, 0, 0, 0.38)',
   },
   secondary: {
-    base: 'bg-white/5 text-white/85 border border-slate-400/30 hover:border-cyan-400/55 hover:text-cyan-300',
+    base: 'bg-white/5 text-white/85 border border-slate-400/30 hover:border-[#D68631]/60 hover:text-[#D68631]',
     shadow: 'none',
-    hoverShadow: '0 8px 24px rgba(34,211,238,0.12)',
+    hoverShadow: '0 8px 24px rgba(214,134,49,0.18)',
   },
 }
 

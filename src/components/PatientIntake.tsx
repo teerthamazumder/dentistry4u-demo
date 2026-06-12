@@ -16,7 +16,7 @@ function StepBar({ current }: { current: number }) {
     <div className="flex items-center justify-between mb-10 relative">
       <div className="absolute top-4 left-0 right-0 h-0.5 bg-white/10 -z-10" />
       <motion.div
-        className="absolute top-4 left-0 h-0.5 bg-gradient-to-r from-primary-500 to-accent -z-10"
+        className="absolute top-4 left-0 h-0.5 bg-gradient-to-r from-[#D68631] to-[#F0A84A] -z-10"
         animate={{ width: `${(current / (STEPS.length - 1)) * 100}%` }}
         transition={{ duration: 0.4, ease: 'easeInOut' }}
       />
@@ -28,8 +28,8 @@ function StepBar({ current }: { current: number }) {
           <div key={s.label} className="flex flex-col items-center gap-2 z-10">
             <motion.div
               animate={{
-                backgroundColor: done || active ? '#0891B2' : 'rgba(255,255,255,0.08)',
-                borderColor: done || active ? '#0891B2' : 'rgba(255,255,255,0.15)',
+                backgroundColor: done || active ? '#D68631' : 'rgba(255,255,255,0.08)',
+                borderColor: done || active ? '#D68631' : 'rgba(255,255,255,0.15)',
               }}
               transition={{ duration: 0.25 }}
               className="w-9 h-9 rounded-full border-2 flex items-center justify-center"
@@ -37,7 +37,7 @@ function StepBar({ current }: { current: number }) {
               <Icon size={15} className={done || active ? 'text-white' : 'text-white/35'} />
             </motion.div>
             <span className={`text-[10px] font-semibold hidden sm:block whitespace-nowrap ${
-              active ? 'text-accent' : done ? 'text-primary-400' : 'text-white/30'
+              active ? 'text-[#D68631]' : done ? 'text-[#D68631]/70' : 'text-white/30'
             }`}>
               {s.label}
             </span>
@@ -48,7 +48,7 @@ function StepBar({ current }: { current: number }) {
   )
 }
 
-const labelClass = 'block text-[11px] font-bold text-sky-200/80 uppercase tracking-wider mb-2'
+const labelClass = 'block text-[11px] font-bold text-panel-body uppercase tracking-wider mb-2'
 
 function Step1() {
   return (
@@ -79,7 +79,7 @@ function Step2() {
             {conditions.map(c => (
               <label key={c} className="flex items-center gap-2.5 cursor-pointer group">
                 <input type="checkbox" className="w-4 h-4 accent-primary-400 rounded" />
-                <span className="text-[13px] text-sky-300/70 group-hover:text-white transition-colors">{c}</span>
+                <span className="text-[13px] text-panel-muted group-hover:text-white transition-colors">{c}</span>
               </label>
             ))}
           </div>
@@ -114,7 +114,7 @@ function Step3() {
           <label className={labelClass}>Dental Anxiety Level</label>
           <div className="flex flex-wrap gap-3 mt-2">
             {['None', 'Mild', 'Moderate', 'Severe'].map(v => (
-              <label key={v} className="flex items-center gap-2 cursor-pointer text-[13px] text-sky-300/70">
+              <label key={v} className="flex items-center gap-2 cursor-pointer text-[13px] text-panel-muted">
                 <input type="radio" name="anxiety" value={v} className="accent-primary-400" />
                 {v}
               </label>
@@ -149,7 +149,7 @@ function Step4() {
         ].map((text, i) => (
           <label key={i} className="flex items-start gap-3 cursor-pointer">
             <input type="checkbox" required={i < 2} className="w-4 h-4 accent-primary-400 mt-0.5 shrink-0" />
-            <span className="text-[12px] text-sky-300/65 leading-relaxed">{text}</span>
+            <span className="text-[12px] text-panel-muted leading-relaxed">{text}</span>
           </label>
         ))}
       </div>
@@ -160,11 +160,11 @@ function Step4() {
 function Step5() {
   return (
     <div className="text-center py-6">
-      <div className="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center mx-auto mb-5">
-        <CheckCircle2 size={36} className="text-accent" />
+      <div className="w-16 h-16 rounded-full bg-[#D68631]/15 flex items-center justify-center mx-auto mb-5">
+        <CheckCircle2 size={36} className="text-[#D68631]" />
       </div>
       <h3 className="text-xl font-bold text-white mb-3">Ready to Submit</h3>
-      <p className="text-sky-300/65 text-[14px] max-w-sm mx-auto leading-relaxed">
+      <p className="text-panel-body text-[14px] max-w-sm mx-auto leading-relaxed">
         Please review your information. When you click Submit, our team will receive your intake form and reach out to confirm your appointment.
       </p>
     </div>
@@ -212,7 +212,7 @@ export default function PatientIntake() {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-sky-300/65 mt-2 text-[14px]"
+            className="text-panel-muted mt-2 text-[14px]"
           >
             Takes about 3–5 minutes. Private and secure.
           </motion.p>
@@ -222,18 +222,18 @@ export default function PatientIntake() {
           initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="glass-dark rounded-3xl p-8 border border-white/10"
+          className="glass-dark glass-card rounded-3xl p-8 border border-white/10"
         >
           {done ? (
             <div className="text-center py-8">
-              <div className="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center mx-auto mb-5">
-                <CheckCircle2 size={36} className="text-accent" />
+              <div className="w-16 h-16 rounded-full bg-[#D68631]/15 flex items-center justify-center mx-auto mb-5">
+                <CheckCircle2 size={36} className="text-[#D68631]" />
               </div>
               <h3 className="text-2xl font-bold text-white mb-3">Thank You!</h3>
-              <p className="text-sky-300/65 text-[14px] mb-4">Your intake form has been submitted. We'll reach out to confirm your visit.</p>
-              <p className="text-[13px] text-sky-300/55">
+              <p className="text-panel-body text-[14px] mb-4">Your intake form has been submitted. We'll reach out to confirm your visit.</p>
+              <p className="text-[13px] text-panel-muted">
                 Questions?{' '}
-                <a href="tel:9024354848" className="text-accent font-bold hover:underline">902-435-4848</a>
+                <a href="tel:9024354848" className="text-[#D68631] font-bold hover:underline">902-435-4848</a>
               </p>
             </div>
           ) : (
@@ -256,7 +256,7 @@ export default function PatientIntake() {
                   <button
                     type="button"
                     onClick={() => setStep(s => s - 1)}
-                    className="flex items-center gap-2 text-[13px] font-semibold text-sky-300/70 border border-white/15 px-5 py-3 rounded-full hover:border-accent hover:text-accent transition-colors"
+                    className="flex items-center gap-2 text-[13px] font-semibold text-sky-300/70 border border-white/15 px-5 py-3 rounded-full hover:border-[#D68631]/60 hover:text-[#D68631] transition-colors"
                   >
                     <ChevronLeft size={16} />Back
                   </button>

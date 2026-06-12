@@ -40,7 +40,7 @@ const clinicInfo = [
   { icon: CreditCard, label: 'Direct Billing Available', sub: 'CDCP, Sun Life, Manulife & more' },
 ]
 
-const labelClass = 'block text-[11px] font-bold text-sky-200/80 uppercase tracking-wider mb-2'
+const labelClass = 'block text-[11px] font-bold text-panel-body uppercase tracking-wider mb-2'
 
 export default function BookingForm() {
   const ref = useRef(null)
@@ -84,7 +84,7 @@ export default function BookingForm() {
             initial={{ opacity: 0, y: 16 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.2 }}
-            className="text-sky-300/65 text-[15px]"
+            className="text-panel-muted text-[15px]"
           >
             Same-day appointments often available. Evening &amp; weekend hours.
           </motion.p>
@@ -98,12 +98,12 @@ export default function BookingForm() {
             transition={{ delay: 0.25, duration: 0.6 }}
             className="space-y-4"
           >
-            <div className="glass-dark rounded-3xl p-6 border border-white/10 border-gradient">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center mb-4 shadow-btn">
+            <div className="glass-dark glass-card rounded-3xl p-6 border border-white/10 border-gradient">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#D68631] to-[#964405] flex items-center justify-center mb-4 shadow-btn-gold">
                 <Calendar size={20} className="text-white" />
               </div>
               <h3 className="text-lg font-bold text-white mb-1">Book an Appointment</h3>
-              <p className="text-[13px] text-sky-300/65 leading-relaxed">
+              <p className="text-[13px] text-panel-muted leading-relaxed">
                 Fill out the form and we'll confirm your appointment within 1 business day.
               </p>
             </div>
@@ -111,13 +111,13 @@ export default function BookingForm() {
             {clinicInfo.map((item) => {
               const Icon = item.icon
               return (
-                <div key={item.label} className="glass-dark rounded-2xl px-5 py-4 flex items-start gap-4 border border-white/10">
+                <div key={item.label} className="glass-dark glass-card rounded-2xl px-5 py-4 flex items-start gap-4 border border-white/10">
                   <div className="w-9 h-9 rounded-xl bg-primary-500/20 flex items-center justify-center shrink-0 mt-0.5">
                     <Icon size={16} className="text-accent" />
                   </div>
                   <div>
                     <div className="text-[13px] font-bold text-white">{item.label}</div>
-                    <div className="text-[11px] text-sky-300/60 mt-0.5">{item.sub}</div>
+                    <div className="text-[11px] text-panel-muted mt-0.5">{item.sub}</div>
                   </div>
                 </div>
               )
@@ -133,16 +133,16 @@ export default function BookingForm() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="glass-dark rounded-3xl p-14 text-center border border-white/10 border-gradient"
               >
-                <div className="w-16 h-16 rounded-full bg-primary-500/20 flex items-center justify-center mx-auto mb-5">
-                  <CheckCircle2 size={36} className="text-accent" />
+                <div className="w-16 h-16 rounded-full bg-[#D68631]/15 flex items-center justify-center mx-auto mb-5">
+                  <CheckCircle2 size={36} className="text-[#D68631]" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">Request Received!</h3>
-                <p className="text-sky-300/70 text-[14px] mb-6 max-w-sm mx-auto leading-relaxed">
+                <p className="text-panel-body text-[14px] mb-6 max-w-sm mx-auto leading-relaxed">
                   We'll confirm your appointment within 1 business day. A team member will call or email you shortly.
                 </p>
                 <p className="text-[13px] text-sky-300/60">
                   Questions? Call us:{' '}
-                  <a href="tel:9024354848" className="text-accent font-bold hover:underline">902-435-4848</a>
+                  <a href="tel:9024354848" className="text-[#D68631] font-bold hover:underline">902-435-4848</a>
                 </p>
               </motion.div>
             ) : (
@@ -152,7 +152,7 @@ export default function BookingForm() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.3, duration: 0.6 }}
                 onSubmit={handleSubmit}
-                className="glass-dark rounded-3xl p-8 border border-white/10 space-y-5"
+                className="glass-dark rounded-3xl p-8 border border-white/10 space-y-5 glass-card"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -236,8 +236,8 @@ export default function BookingForm() {
                         onClick={() => toggleReminder(r)}
                         className={`text-[12px] font-semibold px-4 py-2 rounded-full border transition-all duration-200 ${
                           reminders.includes(r)
-                            ? 'bg-primary-600 text-white border-primary-600 shadow-btn'
-                            : 'border-white/15 text-sky-300/70 hover:border-accent hover:text-accent'
+                            ? 'bg-[#D68631] text-white border-[#D68631] shadow-btn-gold'
+                            : 'border-white/15 text-sky-300/70 hover:border-[#D68631]/60 hover:text-[#D68631]'
                         }`}
                       >
                         {r}
@@ -250,9 +250,9 @@ export default function BookingForm() {
                   Request Appointment
                 </GlowButton>
 
-                <p className="text-center text-[12px] text-sky-300/55 pt-1">
+                <p className="text-center text-[12px] text-panel-muted pt-1">
                   Prefer to call?{' '}
-                  <a href="tel:9024354848" className="text-accent font-bold hover:underline">902-435-4848</a>
+                  <a href="tel:9024354848" className="text-[#D68631] font-bold hover:underline">902-435-4848</a>
                 </p>
               </motion.form>
             )}

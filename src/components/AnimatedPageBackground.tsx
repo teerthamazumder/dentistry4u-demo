@@ -41,8 +41,8 @@ export default function AnimatedPageBackground() {
       {/* Cyan/navy tonal overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#071A2E]/55 via-transparent to-[#051422]/45" />
 
-      {/* Ambient glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-primary-700/8 blur-[160px] pointer-events-none" />
+      {/* Ambient glow — very subtle so video stays visible */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-primary-700/5 blur-[180px] pointer-events-none" />
 
       {/* Top vignette */}
       <div className="absolute top-0 inset-x-0 h-48 bg-gradient-to-b from-slate-950/55 to-transparent pointer-events-none" />

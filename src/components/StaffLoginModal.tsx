@@ -37,7 +37,13 @@ export default function StaffLoginModal({ isOpen, onClose }: StaffLoginModalProp
           >
             <div className="bg-white rounded-[28px] shadow-2xl w-full max-w-[420px] overflow-hidden pointer-events-auto">
               {/* Header gradient */}
-              <div className="relative bg-gradient-to-br from-[#071A2E] to-[#0C2340] px-8 py-7">
+              <div
+                className="relative px-8 py-7"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(32,72,155,0.88), rgba(8,32,74,0.95))',
+                  borderBottom: '1px solid rgba(255,255,255,0.12)',
+                }}
+              >
                 <div className="absolute inset-0 dot-grid opacity-[0.06]" />
                 <div className="relative z-10 flex justify-between items-start">
                   <div>

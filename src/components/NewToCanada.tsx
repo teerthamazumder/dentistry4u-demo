@@ -19,7 +19,8 @@ export default function NewToCanada() {
   return (
     <section id="new-to-canada" className="relative py-28 px-6 overflow-hidden">
       <div className="absolute inset-0 dot-grid opacity-[0.04] pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-primary-700/8 blur-3xl pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-primary-700/4 blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[250px] rounded-full bg-[#D68631]/3 blur-[140px] pointer-events-none" />
 
       <div ref={ref} className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -48,7 +49,7 @@ export default function NewToCanada() {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.2 }}
-              className="text-sky-300/70 text-[15px] leading-relaxed mb-8 max-w-md"
+              className="text-panel-body text-[15px] leading-relaxed mb-8 max-w-md"
             >
               Starting fresh in a new country can be exciting and sometimes overwhelming. Navigating dental care doesn't have to be. We warmly welcome newcomers and make the process simple, comfortable, and affordable.
             </motion.p>
@@ -73,13 +74,13 @@ export default function NewToCanada() {
                   animate={inView ? { opacity: 1, y: 0 } : {}}
                   transition={{ delay: 0.2 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
                   whileHover={{ y: -4 }}
-                  className="glass-dark rounded-2xl p-5 border border-white/10 hover:border-primary-500/30 transition-all duration-300"
+                  className="glass-dark glass-card rounded-2xl p-5 border border-white/10 hover:border-white/26 transition-all duration-300"
                 >
                   <div className={`w-10 h-10 rounded-xl ${f.iconBg} flex items-center justify-center mb-3`}>
                     <Icon size={18} className={f.iconColor} />
                   </div>
                   <h4 className="text-[13px] font-bold text-white mb-1.5">{f.title}</h4>
-                  <p className="text-[12px] text-sky-300/65 leading-relaxed">{f.desc}</p>
+                  <p className="text-[12px] text-panel-muted leading-relaxed">{f.desc}</p>
                 </motion.div>
               )
             })}
