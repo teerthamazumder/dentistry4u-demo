@@ -104,7 +104,7 @@ export default function NewToCanada() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 }}
             >
-              <GlowButton href="#booking">Book Your First Visit</GlowButton>
+              <GlowButton href="#contact">Get in Touch</GlowButton>
             </motion.div>
           </div>
 

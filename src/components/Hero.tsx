@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Calendar, ChevronRight, ShieldCheck, Clock, CreditCard, Star, Heart } from 'lucide-react'
+import { ChevronRight, ShieldCheck, Clock, CreditCard, Star, Heart } from 'lucide-react'
 import { MeshGradient } from '@paper-design/shaders-react'
 import { GlowButton } from './ui/GlowButton'
 import { CountUpStat } from './ui/CountUpStat'
@@ -92,12 +92,11 @@ export default function Hero() {
               custom={3} variants={fadeUp} initial="hidden" animate="show"
               className="flex flex-wrap gap-4 mb-12"
             >
-              <GlowButton href="#booking">
-                <Calendar size={16} />
-                Book Appointment
+              <GlowButton href="#contact">
+                Contact Us
               </GlowButton>
-              <GlowButton href="#intake" variant="secondary">
-                New Patient Form
+              <GlowButton href="#services" variant="secondary">
+                View Services
                 <ChevronRight size={16} />
               </GlowButton>
             </motion.div>

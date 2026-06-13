@@ -1,10 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  Menu, X, Calendar,
+  Menu, X,
   Home, Stethoscope, Shield, UserPlus, Phone, Lock,
 } from 'lucide-react'
-import { GlowButton } from './ui/GlowButton'
 
 interface NavbarProps {
   onStaffLogin: () => void
@@ -15,8 +14,7 @@ const desktopLinks = [
   { label: 'Services',     href: '#services' },
   { label: 'Coverage',     href: '#cdcp' },
   { label: 'New Patients', href: '#new-to-canada' },
-  { label: 'Intake',       href: '#intake' },
-  { label: 'Book',         href: '#booking' },
+  { label: 'Insurance',    href: '#insurance' },
   { label: 'Contact',      href: '#contact' },
 ]
 
@@ -31,12 +29,10 @@ const mobileItems = [
 
 /* Pill height estimates used to stack mobile elements */
 const PILL_H   = 66   // px — floating pill nav
-const BOOK_H   = 56   // px — Book Appointment button (size lg)
 const GAP      = 12   // px — spacing between elements
 const BOTTOM   = 16   // px — distance from viewport bottom
 
-const BOOK_BOTTOM  = BOTTOM + PILL_H + GAP                   // ~94 px
-const STAFF_BOTTOM = BOOK_BOTTOM + BOOK_H + GAP              // ~162 px
+const STAFF_BOTTOM = BOTTOM + PILL_H + GAP                   // ~94 px
 
 export default function Navbar({ onStaffLogin }: NavbarProps) {
   const [scrolled,  setScrolled]  = useState(false)
@@ -196,13 +192,6 @@ export default function Navbar({ onStaffLogin }: NavbarProps) {
             >
               Staff Login
             </button>
-
-            <div className="relative z-10 ml-1">
-              <GlowButton href="#booking" size="sm">
-                <Calendar size={14} />
-                Book Now
-              </GlowButton>
-            </div>
           </div>
 
           {/* Mobile hamburger — animated icon swap */}
@@ -264,7 +253,7 @@ export default function Navbar({ onStaffLogin }: NavbarProps) {
               aria-hidden="true"
             />
 
-            {/* Staff login button — stacked above Book Appointment */}
+            {/* Staff login button — stacked above pill nav */}
             <motion.div
               key="staff"
               initial={{ y: 60, opacity: 0 }}
@@ -289,23 +278,6 @@ export default function Navbar({ onStaffLogin }: NavbarProps) {
                 <Lock size={13} />
                 Staff Login
               </button>
-            </motion.div>
-
-            {/* Book Appointment — strong CTA above the pill */}
-            <motion.div
-              key="book"
-              initial={{ y: 80, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: 80, opacity: 0 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 30, delay: 0.08 }}
-              className="fixed left-4 right-4 z-50 md:hidden"
-              style={{ bottom: BOOK_BOTTOM }}
-              onClick={() => setMenuOpen(false)}
-            >
-              <GlowButton href="#booking" fullWidth size="lg">
-                <Calendar size={18} />
-                Book Appointment
-              </GlowButton>
             </motion.div>
 
             {/* Floating pill nav — spring entry, sliding indicator inside (menu.txt) */}

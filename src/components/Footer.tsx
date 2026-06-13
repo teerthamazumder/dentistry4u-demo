@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, Clock, ExternalLink, Calendar } from 'lucide-react'
+import { Phone, Mail, MapPin, Clock, ExternalLink } from 'lucide-react'
 import { GlowButton } from './ui/GlowButton'
 
 interface FooterProps {
@@ -12,12 +12,11 @@ const hours = [
 ]
 
 const quickLinks = [
-  { label: 'Services',         href: '#services' },
-  { label: 'CDCP Coverage',    href: '#cdcp' },
-  { label: 'New Patients',     href: '#new-to-canada' },
-  { label: 'Patient Intake',   href: '#intake' },
-  { label: 'Book Appointment', href: '#booking' },
-  { label: 'Contact',          href: '#contact' },
+  { label: 'Services',      href: '#services' },
+  { label: 'CDCP Coverage', href: '#cdcp' },
+  { label: 'New Patients',  href: '#new-to-canada' },
+  { label: 'Insurance',     href: '#insurance' },
+  { label: 'Contact',       href: '#contact' },
 ]
 
 export default function Footer({ onStaffLogin }: FooterProps) {
@@ -58,9 +57,8 @@ export default function Footer({ onStaffLogin }: FooterProps) {
               </a>
             </div>
 
-            <GlowButton href="#booking" size="sm">
-              <Calendar size={14} />
-              Book Appointment
+            <GlowButton href="tel:9024354848" size="sm">
+              Call 902-435-4848
             </GlowButton>
           </div>
 
@@ -151,9 +149,23 @@ export default function Footer({ onStaffLogin }: FooterProps) {
 
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-3">
-          <span className="text-[11px] text-center sm:text-left" style={{ color: 'rgba(255,255,255,0.25)' }}>
-            © {new Date().getFullYear()} Dentistry4U. All rights reserved. 133 Baker Drive Suite 106, Dartmouth NS.
-          </span>
+          <div className="flex flex-col items-center sm:items-start gap-0.5">
+            <span className="text-[11px] text-center sm:text-left" style={{ color: 'rgba(255,255,255,0.25)' }}>
+              © {new Date().getFullYear()} Dentistry4U. All rights reserved. 133 Baker Drive Suite 106, Dartmouth NS.
+            </span>
+            <span className="text-[11px]" style={{ color: 'rgba(255,255,255,0.18)' }}>
+              Website by{' '}
+              <a
+                href="https://synapxislabs.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-70 transition-opacity"
+                style={{ color: 'rgba(255,255,255,0.32)' }}
+              >
+                synapxislabs.com
+              </a>
+            </span>
+          </div>
           <div className="flex items-center gap-4">
             <a href="#" className="text-[11px] transition-colors hover:opacity-60" style={{ color: 'rgba(255,255,255,0.25)' }}>Privacy Policy</a>
             <button
