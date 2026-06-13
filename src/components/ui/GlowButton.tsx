@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import type { ReactNode } from 'react'
 
-type Variant = 'primary' | 'secondary'
+type Variant = 'primary' | 'secondary' | 'light' | 'outline-light'
 type Size    = 'sm' | 'md' | 'lg'
 
 interface GlowButtonProps {
@@ -25,15 +25,37 @@ const sizes: Record<Size, string> = {
 
 const variants: Record<Variant, { base: string; shadow: string; hoverShadow: string }> = {
   primary: {
-    base: 'bg-gradient-to-r from-[#0096cc] to-[#0072b8] text-white border border-sky-400/30',
-    shadow: '0 8px 24px rgba(0, 0, 0, 0.30)',
-    hoverShadow: '0 12px 32px rgba(0, 0, 0, 0.38)',
+    base: 'bg-gradient-to-r from-[#223B86] to-[#08154A] text-white border border-[#08154A]/20',
+    shadow: '0 4px 20px rgba(34,59,134,0.35)',
+    hoverShadow: '0 10px 36px rgba(34,59,134,0.55)',
   },
   secondary: {
-    base: 'bg-white/5 text-white/85 border border-slate-400/30 hover:border-[#D68631]/60 hover:text-[#D68631]',
-    shadow: 'none',
-    hoverShadow: '0 8px 24px rgba(214,134,49,0.18)',
+    base: 'bg-[#F8F7F2] text-[#08154A] border border-[rgba(8,21,74,0.18)] hover:border-[#223B86] hover:text-[#223B86]',
+    shadow: '0 2px 12px rgba(8,21,74,0.08)',
+    hoverShadow: '0 6px 22px rgba(34,59,134,0.18)',
   },
+  light: {
+    base: 'bg-white text-[#08154A] font-bold border-0',
+    shadow: '0 4px 20px rgba(0,0,0,0.18)',
+    hoverShadow: '0 8px 32px rgba(0,0,0,0.26)',
+  },
+  'outline-light': {
+    base: 'bg-transparent text-white/80 border border-white/30 hover:border-white/65 hover:text-white',
+    shadow: '0 2px 10px rgba(0,0,0,0.10)',
+    hoverShadow: '0 6px 22px rgba(0,0,0,0.20)',
+  },
+}
+
+/* Two shared glow layers — mirroring the button.txt multi-layer conic approach */
+function GlowLayers() {
+  return (
+    <>
+      {/* Outer ring: broad blur, navy→sky→gold sweep */}
+      <div className="glow-layer-1" aria-hidden="true"><span /></div>
+      {/* Inner ring: tighter blur, sky→gold sweep */}
+      <div className="glow-layer-2" aria-hidden="true"><span /></div>
+    </>
+  )
 }
 
 export function GlowButton({
@@ -49,14 +71,16 @@ export function GlowButton({
   className = '',
 }: GlowButtonProps) {
   const v = variants[variant]
+  const wrapClass = `glow-btn-wrap ${variant} ${fullWidth ? 'flex w-full' : 'inline-flex'}`
 
   const inner = (
     <motion.span
-      whileHover={{ y: -2, boxShadow: v.hoverShadow }}
+      whileHover={{ y: -1.5, boxShadow: v.hoverShadow }}
       whileTap={{ y: 0, boxShadow: v.shadow }}
       transition={{ duration: 0.18, ease: 'easeOut' }}
       style={{ boxShadow: v.shadow, display: fullWidth ? 'flex' : 'inline-flex' }}
-      className={`items-center justify-center gap-2 font-semibold rounded-full transition-colors duration-200 select-none
+      className={`relative z-0 items-center justify-center gap-2 font-semibold rounded-full
+        transition-colors duration-200 select-none
         ${sizes[size]} ${v.base} ${fullWidth ? 'w-full' : ''} ${className}`}
     >
       {children}
@@ -65,24 +89,30 @@ export function GlowButton({
 
   if (href) {
     return (
-      <a
-        href={href}
-        target={target}
-        rel={rel}
-        className={fullWidth ? 'block w-full' : 'inline-block'}
-      >
-        {inner}
-      </a>
+      <div className={wrapClass}>
+        <GlowLayers />
+        <a
+          href={href}
+          target={target}
+          rel={rel}
+          className={fullWidth ? 'block w-full' : 'inline-block'}
+        >
+          {inner}
+        </a>
+      </div>
     )
   }
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      className={`bg-transparent border-none p-0 m-0 cursor-pointer ${fullWidth ? 'block w-full' : 'inline-block'}`}
-    >
-      {inner}
-    </button>
+    <div className={wrapClass}>
+      <GlowLayers />
+      <button
+        type={type}
+        onClick={onClick}
+        className={`bg-transparent border-none p-0 m-0 cursor-pointer ${fullWidth ? 'block w-full' : 'inline-block'}`}
+      >
+        {inner}
+      </button>
+    </div>
   )
 }

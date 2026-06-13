@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import AnimatedPageBackground from './components/AnimatedPageBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -16,14 +15,10 @@ function App() {
   const [staffModalOpen, setStaffModalOpen] = useState(false)
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-slate-950">
-      {/* Fixed cinematic background — sits behind everything */}
-      <AnimatedPageBackground />
-
+    <div className="relative min-h-screen overflow-x-hidden bg-[#FDFAF6]">
       <Navbar onStaffLogin={() => setStaffModalOpen(true)} />
 
-      {/* All page sections float above the animated background */}
-      <main className="relative z-10">
+      <main>
         <Hero />
         <Services />
         <CDCPSection />

@@ -24,7 +24,8 @@ export default function StaffLoginModal({ isOpen, onClose }: StaffLoginModalProp
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-[60] bg-deep-navy/70 backdrop-blur-md"
+            className="fixed inset-0 z-[60] backdrop-blur-md"
+            style={{ background: 'rgba(8,21,74,0.60)' }}
           />
 
           {/* Modal */}
@@ -35,27 +36,28 @@ export default function StaffLoginModal({ isOpen, onClose }: StaffLoginModalProp
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-[70] flex items-center justify-center p-4 pointer-events-none"
           >
-            <div className="bg-white rounded-[28px] shadow-2xl w-full max-w-[420px] overflow-hidden pointer-events-auto">
-              {/* Header gradient */}
+            <div
+              className="rounded-[28px] shadow-2xl w-full max-w-[420px] overflow-hidden pointer-events-auto"
+              style={{ background: '#F8F7F2', border: '1px solid rgba(8,21,74,0.10)' }}
+            >
+              {/* Navy header */}
               <div
                 className="relative px-8 py-7"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(32,72,155,0.88), rgba(8,32,74,0.95))',
-                  borderBottom: '1px solid rgba(255,255,255,0.12)',
-                }}
+                style={{ background: 'linear-gradient(135deg, #223B86, #08154A)' }}
               >
                 <div className="absolute inset-0 dot-grid opacity-[0.06]" />
                 <div className="relative z-10 flex justify-between items-start">
                   <div>
-                    <div className="w-12 h-12 rounded-2xl bg-primary-500/25 flex items-center justify-center mb-4 border border-primary-400/30">
-                      <Lock size={22} className="text-accent" />
+                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-4" style={{ background: 'rgba(255,255,255,0.18)', border: '1px solid rgba(255,255,255,0.25)' }}>
+                      <Lock size={22} className="text-white" />
                     </div>
-                    <h2 className="text-xl font-extrabold text-white">Staff Portal</h2>
-                    <p className="text-sky-300/70 text-[13px] mt-1">Dentistry4U Team Access</p>
+                    <h2 className="text-xl text-white" style={{ fontFamily: "'Playfair Display', serif", fontWeight: 700 }}>Staff Portal</h2>
+                    <p className="text-[13px] mt-1" style={{ color: 'rgba(255,255,255,0.65)' }}>Dentistry4U Team Access</p>
                   </div>
                   <button
                     onClick={onClose}
-                    className="text-white/40 hover:text-white transition-colors mt-1 p-1 rounded-lg hover:bg-white/10"
+                    className="transition-colors mt-1 p-1 rounded-lg hover:bg-white/10"
+                    style={{ color: 'rgba(255,255,255,0.50)' }}
                     aria-label="Close"
                   >
                     <X size={20} />
@@ -66,16 +68,16 @@ export default function StaffLoginModal({ isOpen, onClose }: StaffLoginModalProp
               {/* Body */}
               <div className="px-8 py-7">
                 {/* Warning */}
-                <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3.5 mb-6">
-                  <ShieldCheck size={16} className="text-amber-600 shrink-0 mt-0.5" />
-                  <p className="text-[12px] text-amber-700 leading-relaxed">
+                <div className="flex items-start gap-3 rounded-2xl px-4 py-3.5 mb-6" style={{ background: 'rgba(217,162,58,0.08)', border: '1px solid rgba(217,162,58,0.25)' }}>
+                  <ShieldCheck size={16} className="shrink-0 mt-0.5" style={{ color: '#A9530B' }} />
+                  <p className="text-[12px] leading-relaxed" style={{ color: '#A9530B' }}>
                     Staff portal requires authorized clinic credentials. Contact your system administrator for access.
                   </p>
                 </div>
 
                 <form onSubmit={e => e.preventDefault()} className="space-y-4">
                   <div>
-                    <label className="block text-[11px] font-bold text-deep-navy uppercase tracking-wider mb-2">
+                    <label className="block text-[11px] font-bold uppercase tracking-wider mb-2" style={{ color: 'rgba(8,21,74,0.60)' }}>
                       Staff Email
                     </label>
                     <input
@@ -85,7 +87,7 @@ export default function StaffLoginModal({ isOpen, onClose }: StaffLoginModalProp
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-bold text-deep-navy uppercase tracking-wider mb-2">
+                    <label className="block text-[11px] font-bold uppercase tracking-wider mb-2" style={{ color: 'rgba(8,21,74,0.60)' }}>
                       Password
                     </label>
                     <div className="relative">
@@ -97,7 +99,8 @@ export default function StaffLoginModal({ isOpen, onClose }: StaffLoginModalProp
                       <button
                         type="button"
                         onClick={() => setShowPw(v => !v)}
-                        className="absolute right-3.5 top-1/2 -translate-y-1/2 text-muted hover:text-brand-text transition-colors p-1"
+                        className="absolute right-3.5 top-1/2 -translate-y-1/2 transition-colors p-1"
+                        style={{ color: '#5A6A8A' }}
                         aria-label={showPw ? 'Hide password' : 'Show password'}
                       >
                         {showPw ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -110,9 +113,9 @@ export default function StaffLoginModal({ isOpen, onClose }: StaffLoginModalProp
                   </GlowButton>
                 </form>
 
-                <p className="text-center text-[12px] text-muted mt-5">
+                <p className="text-center text-[12px] mt-5" style={{ color: '#5A6A8A' }}>
                   Trouble signing in?{' '}
-                  <a href="mailto:admin@dentistry4u.ca" className="text-primary-600 font-bold hover:underline">
+                  <a href="mailto:admin@dentistry4u.ca" className="font-bold hover:underline" style={{ color: '#223B86' }}>
                     admin@dentistry4u.ca
                   </a>
                 </p>

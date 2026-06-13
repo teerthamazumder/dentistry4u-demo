@@ -4,46 +4,73 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
       },
       colors: {
+        // ── New coastal-premium dental palette ──────────────────────────
+        navy:         '#08154A',   // dark navy — headings, dark sections
+        'royal-blue': '#223B86',   // royal blue — brand primary, buttons
+        mustard:      '#D9A23A',   // warm mustard — accents, badges
+        clay:         '#A9530B',   // burnt orange — secondary accent
+        sand:         '#E7E1D6',   // warm sand — light section backgrounds
+        'off-white':  '#F8F7F2',   // clean off-white — base background, cards
+
+        // ── Legacy names remapped to new palette (class refs still work) ─
+        cream:            '#E7E1D6',   // sand (was #FAF7F2)
+        'warm-white':     '#F8F7F2',   // off-white (was #FDFAF6)
+        sage:             '#D9A23A',   // mustard (was #7B9E87)
+        'sage-light':     '#EDD89A',   // pale mustard (was #A8C4B0)
+        'sage-dark':      '#223B86',   // royal blue (was #4A7A5C)
+        gold:             '#D9A23A',   // mustard (was #C9A84C)
+        'gold-light':     '#F0D9A0',   // pale mustard (was #E8D5A3)
+        charcoal:         '#08154A',   // dark navy (was #2C2C2C)
+        'charcoal-soft':  '#1A2E6B',   // mid navy (was #3D3D3D)
+        'mid-gray':       '#5A6A8A',   // muted navy-gray (was #7A7A7A)
+        'light-gray':     '#DDD9CE',   // sand border (was #E8E4DC)
+        'pink-blush':     '#FDE8D8',   // light clay (was #F5EBE8)
+        terracotta:       '#A9530B',   // clay (was #C5856A)
+
+        // ── Primary scale ────────────────────────────────────────────────
         primary: {
-          DEFAULT: '#0891B2',
-          50: '#ECFEFF',
-          100: '#CFFAFE',
-          200: '#A5F3FC',
-          300: '#67E8F9',
-          400: '#22D3EE',
-          500: '#06B6D4',
-          600: '#0891B2',
-          700: '#0E7490',
-          800: '#155E75',
-          900: '#164E63',
+          DEFAULT: '#223B86',
+          50:  '#EEF1FA',
+          100: '#D4DBEF',
+          200: '#A9B7DF',
+          300: '#7E93CF',
+          400: '#536FBF',
+          500: '#223B86',
+          600: '#1B2F6B',
+          700: '#142350',
+          800: '#08154A',
+          900: '#040B27',
         },
-        'deep-navy': '#0C2340',
-        'navy-mid': '#1E3A5F',
-        'soft-bg': '#F0F9FF',
-        'soft-bg-2': '#E0F2FE',
-        accent: '#22D3EE',
-        'brand-text': '#0F172A',
-        muted: '#64748B',
-        // Warm gold palette
-        'warm-gold': '#D68631',
-        'deep-amber': '#964405',
-        'dark-brown': '#5A3211',
+
+        // ── Alias helpers ────────────────────────────────────────────────
+        'deep-navy':  '#08154A',
+        'soft-bg':    '#F8F7F2',
+        'soft-bg-2':  '#E7E1D6',
+        accent:       '#D9A23A',
+        'brand-text': '#08154A',
+        muted:        '#5A6A8A',
+        'warm-gold':  '#D9A23A',
+        'deep-amber': '#A9530B',
+        'dark-brown': '#08154A',
       },
       boxShadow: {
-        'glow-sm': '0 0 20px rgba(8,145,178,0.15)',
-        glow: '0 0 40px rgba(8,145,178,0.2)',
-        'glow-lg': '0 0 80px rgba(8,145,178,0.25)',
-        card: '0 4px 24px rgba(8,145,178,0.08), 0 1px 3px rgba(0,0,0,0.05)',
-        elevated: '0 20px 60px rgba(8,145,178,0.12), 0 8px 24px rgba(0,0,0,0.06)',
-        btn: '0 4px 20px rgba(8,145,178,0.40)',
-        'btn-hover': '0 8px 30px rgba(8,145,178,0.50)',
-        float: '0 8px 40px rgba(8,145,178,0.12)',
-        'glow-gold': '0 0 30px rgba(214,134,49,0.22), 0 0 60px rgba(214,134,49,0.08)',
-        'glow-gold-sm': '0 0 16px rgba(214,134,49,0.18)',
-        'btn-gold': '0 4px 20px rgba(214,134,49,0.35)',
+        card:        '0 18px 45px rgba(8,21,74,0.08), 0 4px 12px rgba(8,21,74,0.04)',
+        'card-hover':'0 24px 60px rgba(8,21,74,0.14), 0 8px 20px rgba(8,21,74,0.06)',
+        'card-sm':   '0 4px 20px rgba(8,21,74,0.06)',
+        elevated:    '0 20px 60px rgba(8,21,74,0.12), 0 8px 24px rgba(8,21,74,0.06)',
+        btn:         '0 4px 20px rgba(34,59,134,0.35)',
+        'btn-hover': '0 8px 30px rgba(34,59,134,0.50)',
+        float:       '0 8px 40px rgba(34,59,134,0.12)',
+        'glow-navy': '0 0 30px rgba(8,21,74,0.22), 0 0 60px rgba(8,21,74,0.08)',
+        // legacy aliases
+        'glow-sage':    '0 0 30px rgba(34,59,134,0.22), 0 0 60px rgba(34,59,134,0.08)',
+        'glow-gold':    '0 0 30px rgba(217,162,58,0.22), 0 0 60px rgba(217,162,58,0.08)',
+        'glow-gold-sm': '0 0 16px rgba(217,162,58,0.18)',
+        'btn-gold':     '0 4px 20px rgba(217,162,58,0.35)',
       },
       keyframes: {
         float: {
@@ -75,7 +102,6 @@ export default {
         spin: {
           to: { transform: 'rotate(360deg)' },
         },
-        // GlowButton — combines speen (rotate) + woah (scale) in a single 8 s keyframe
         glowSpin: {
           '0%':   { transform: 'rotate(10deg)  scale(1)' },
           '25%':  { transform: 'rotate(100deg) scale(0.875)' },
@@ -85,15 +111,15 @@ export default {
         },
       },
       animation: {
-        float: 'float 6s ease-in-out infinite',
-        'float-slow': 'float 9s ease-in-out infinite',
-        'float-alt': 'floatAlt 7s ease-in-out infinite',
-        blob: 'blob 14s ease-in-out infinite',
-        'blob-alt': 'blobAlt 18s ease-in-out 3s infinite',
-        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
-        shimmer: 'shimmer 0.65s ease-out forwards',
-        spin: 'spin 1s linear infinite',
-        'glow-spin': 'glowSpin 8s cubic-bezier(0.56,0.15,0.28,0.86) infinite',
+        float:         'float 6s ease-in-out infinite',
+        'float-slow':  'float 9s ease-in-out infinite',
+        'float-alt':   'floatAlt 7s ease-in-out infinite',
+        blob:          'blob 14s ease-in-out infinite',
+        'blob-alt':    'blobAlt 18s ease-in-out 3s infinite',
+        'pulse-glow':  'pulseGlow 3s ease-in-out infinite',
+        shimmer:       'shimmer 0.65s ease-out forwards',
+        spin:          'spin 1s linear infinite',
+        'glow-spin':   'glowSpin 8s cubic-bezier(0.56,0.15,0.28,0.86) infinite',
       },
     },
   },

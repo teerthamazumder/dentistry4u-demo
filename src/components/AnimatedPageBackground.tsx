@@ -1,54 +1,60 @@
-import { useEffect, useRef } from 'react'
-import { useScroll } from 'framer-motion'
+import { motion } from 'framer-motion'
+
+const blobs = [
+  {
+    style: { top: '-180px', left: '-180px', width: '720px', height: '720px' },
+    background: 'rgba(237,212,154,0.32)',
+    animate: { x: [0, 55, 20, 0], y: [0, 35, -20, 0] },
+    duration: 22,
+  },
+  {
+    style: { top: '-120px', right: '-200px', width: '640px', height: '640px' },
+    background: 'rgba(34,59,134,0.14)',
+    animate: { x: [0, -45, 10, 0], y: [0, 50, 20, 0] },
+    duration: 28,
+  },
+  {
+    style: { bottom: '-200px', left: '30%', width: '700px', height: '520px' },
+    background: 'rgba(217,162,58,0.14)',
+    animate: { x: [0, -30, 40, 0], y: [0, -40, 15, 0] },
+    duration: 34,
+  },
+  {
+    style: { top: '40%', left: '-100px', width: '480px', height: '480px' },
+    background: 'rgba(47,125,92,0.10)',
+    animate: { x: [0, 40, -10, 0], y: [0, -30, 20, 0] },
+    duration: 26,
+  },
+]
 
 export default function AnimatedPageBackground() {
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const { scrollYProgress } = useScroll()
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    video.pause()
-
-    const unsubscribe = scrollYProgress.on('change', (progress) => {
-      if (!video.duration) return
-      try {
-        video.currentTime = progress * video.duration
-      } catch {
-        // ignore seek errors before metadata loads
-      }
-    })
-
-    return () => unsubscribe()
-  }, [scrollYProgress])
-
   return (
-    <div className="fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
-      <video
-        ref={videoRef}
-        src="/animated-scroll.mp4"
-        muted
-        playsInline
-        preload="auto"
-        style={{ willChange: 'transform' }}
-        className="absolute inset-0 w-full h-full object-cover"
+    <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none" aria-hidden="true">
+      {/* Base gradient */}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(145deg, #F5EFE4 0%, #EDE8D8 55%, #E8E2D4 100%)' }}
       />
 
-      {/* Primary dark overlay */}
-      <div className="absolute inset-0 bg-slate-950/65" />
-
-      {/* Cyan/navy tonal overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#071A2E]/55 via-transparent to-[#051422]/45" />
-
-      {/* Ambient glow — very subtle so video stays visible */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] rounded-full bg-primary-700/5 blur-[180px] pointer-events-none" />
-
-      {/* Top vignette */}
-      <div className="absolute top-0 inset-x-0 h-48 bg-gradient-to-b from-slate-950/55 to-transparent pointer-events-none" />
-
-      {/* Bottom vignette */}
-      <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-slate-950/75 to-transparent pointer-events-none" />
+      {/* Animated ambient blobs */}
+      {blobs.map((blob, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full"
+          style={{
+            ...blob.style,
+            background: blob.background,
+            filter: 'blur(120px)',
+          }}
+          animate={blob.animate}
+          transition={{
+            duration: blob.duration,
+            repeat: Infinity,
+            ease: 'easeInOut',
+            repeatType: 'mirror',
+          }}
+        />
+      ))}
     </div>
   )
 }
